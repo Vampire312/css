@@ -1,5 +1,0 @@
-E -> TA
-A -> +TA | @
-T -> FS
-S -> *FS | @
-F -> id | (E)
