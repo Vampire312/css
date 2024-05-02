@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_LEN 100
+
+// Function to encrypt using transpositional cipher
+void encryptTransposition(char *plaintext, char *key, char *ciphertext) {
+    int keyLen = strlen(key);
+    int textLen = strlen(plaintext);
+    int numCols = keyLen;
+    int numRows = (textLen + keyLen - 1) / keyLen;
+
+    char matrix[numRows][numCols];
+
+    int k = 0;
+    for (int i = 0; i < numRows; i++) {
+        for (int j = 0; j < numCols && k < textLen; j++) {
+            matrix[i][j] = plaintext[k++];
+        }
+    }
+
+    for (int i = 0; i < numCols; i++) {
+        int col = key[i] - '0' - 1;
+        for (int j = 0; j < numRows; j++) {
+            ciphertext[i*numRows + j] = matrix[j][col];
+        }
+    }
+    ciphertext[textLen] = '\0';
+}
+
+// Function to decrypt using transpositional cipher
+void decryptTransposition(char *ciphertext, char *key, char *decryptedtext) {
+    int keyLen = strlen(key);
+    int textLen = strlen(ciphertext);
+    int numCols = keyLen;
+    int numRows = (textLen + keyLen - 1) / keyLen;
+
+    char matrix[numRows][numCols];
+
+    int k = 0;
+    for (int i = 0; i < numCols; i++) {
+        int col = key[i] - '0' - 1;
+        for (int j = 0; j < numRows; j++) {
+            matrix[j][col] = ciphertext[k++];
+        }
+    }
+
+    k = 0;
+    for (int i = 0; i < numRows; i++) {
+        for (int j = 0; j < numCols && k < textLen; j++) {
+            decryptedtext[k++] = matrix[i][j];
+        }
+    }
+    decryptedtext[textLen] = '\0';
+}
+
+int main() {
+    char plaintext[MAX_LEN], key[MAX_LEN], ciphertext[MAX_LEN], decryptedtext[MAX_LEN];
+
+    printf("Enter the plaintext: ");
+    fgets(plaintext, MAX_LEN, stdin);
+    printf("Enter the key (permutation of digits from 1 to %lu): ", strlen(plaintext)-1);
+    fgets(key, MAX_LEN, stdin);
+
+    // Remove newline characters
+    plaintext[strcspn(plaintext, "\n")] = '\0';
+    key[strcspn(key, "\n")] = '\0';
+
+    // Encrypt
+    encryptTransposition(plaintext, key, ciphertext);
+    printf("Encrypted text: %s\n", ciphertext);
+
+    // Decrypt
+    decryptTransposition(ciphertext, key, decryptedtext);
+    printf("Decrypted text: %s\n", decryptedtext);
+
+    return 0;
+}

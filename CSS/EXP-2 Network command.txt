@@ -1,0 +1,214 @@
+
+1. **ipconfig**:
+   - Description: Displays the IP configuration for all network adapters on the system.
+   - Expected Output: Information about IP address, subnet mask, default gateway, and DNS servers for each adapter.
+
+   ```
+   Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . :
+   IPv4 Address. . . . . . . . . . . : 192.168.1.100
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 192.168.1.1
+   ```
+
+2. **ping**:
+   - Description: Sends ICMP echo requests to a specified network host to test connectivity.
+   - Expected Output: Response times (in milliseconds) from the target host.
+
+   ```
+   Pinging google.com [216.58.194.174] with 32 bytes of data:
+   Reply from 216.58.194.174: bytes=32 time=14ms TTL=57
+   ```
+
+3. **tracert**:
+   - Description: Traces the route that packets take to reach a specified network host.
+   - Expected Output: List of intermediate hops with response times and IP addresses.
+
+   ```
+   Tracing route to google.com [216.58.194.174]
+   over a maximum of 30 hops:
+   
+   1    <1 ms    <1 ms    <1 ms  192.168.1.1
+   2    14 ms    15 ms    14 ms  10.0.0.1
+   3    20 ms    18 ms    19 ms  68.85.176.1
+   ```
+
+4. **netstat**:
+   - Description: Displays network statistics for active connections, routing tables, and listening ports.
+   - Expected Output: Lists of active connections, listening ports, and routing table information.
+
+   ```
+   Active Connections
+
+   Proto  Local Address          Foreign Address        State
+   TCP    192.168.1.100:65123    52.32.49.171:https    ESTABLISHED
+   ```
+
+5. **nslookup**:
+   - Description: Queries DNS to retrieve domain name or IP address information.
+   - Expected Output: IP address(es) corresponding to a domain name or domain name(s) corresponding to an IP address.
+
+   ```
+   Server:  UnKnown
+   Address:  192.168.1.1
+
+   Name:    google.com
+   Addresses:  2607:f8b0:4007:80e::200e
+              172.217.6.142
+   ```
+
+6. **arp**:
+   - Description: Displays and modifies the ARP cache, which maps IP addresses to MAC addresses.
+   - Expected Output: List of IP addresses and their corresponding MAC addresses.
+
+   ```
+   Interface: 192.168.1.100 --- 0xb
+      Internet Address      Physical Address      Type
+      192.168.1.1           00-1a-2b-3c-4d-5e     dynamic
+   ```
+
+7. **route**:
+   - Description: View and manipulate the local IP routing table.
+   - Expected Output: Information about the routing table, including destination networks, gateway addresses, and interface indices.
+
+   ```
+   Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+   0.0.0.0         192.168.1.1     0.0.0.0         UG    100    0        0 eth0
+   ```
+
+8. **nbtstat**:
+   - Description: Displays NetBIOS over TCP/IP (NetBT) protocol statistics and connections.
+   - Expected Output: Information about NetBIOS sessions, connections, and names.
+
+   ```
+   Local Area Connection:
+   Node IpAddress: [192.168.1.100] Scope Id: []
+
+          NetBIOS Remote Machine Name Table
+
+      Name               Type         Status
+   ---------------------------------------------
+   COMPUTER1       <00>  UNIQUE      Registered
+   ```
+
+9. **hostname**:
+   - Description: Displays the name of the local computer.
+   - Expected Output: The hostname of the local machine.
+
+   ```
+   COMPUTER1
+   ```
+
+10. **telnet**:
+   - Description: Connects to a remote host via the Telnet protocol.
+   - Expected Output: Upon successful connection, the remote host's command prompt is displayed.
+
+   ```
+   Microsoft Telnet> open example.com
+   Welcome to example.com...
+   ```
+
+And so on for the rest of the commands!
+
+Sure, here are the descriptions and expected outputs for the remaining commands:
+
+11. **ftp**:
+   - Description: Connects to an FTP server to transfer files.
+   - Expected Output: After successful connection, the FTP prompt is displayed where you can execute FTP commands.
+
+   ```
+   Connected to ftp.example.com.
+   220 Welcome to Example FTP Server.
+   ```
+
+12. **netsh**:
+   - Description: Command-line scripting utility to manage network configuration.
+   - Expected Output: Various subcommands and options for configuring network settings.
+
+   ```
+   netsh> interface ipv4 show config
+   Configuration for interface "Local Area Connection"
+       DHCP enabled:                         Yes
+   ```
+
+13. **tracert6**:
+   - Description: Traces the route that IPv6 packets take to reach a specified network host.
+   - Expected Output: Similar to tracert but for IPv6 addresses.
+
+   ```
+   Tracing route to ipv6.google.com [2607:f8b0:4007:802::200e]
+   over a maximum of 30 hops:
+   ```
+
+14. **pathping**:
+   - Description: Combines features of ping and tracert to provide more detailed network path information.
+   - Expected Output: Packet loss and latency statistics for each hop along the route.
+
+   ```
+   Tracing route to example.com [192.0.2.1]
+   over a maximum of 30 hops:
+   ```
+
+15. **route print**:
+   - Description: Displays the local IP routing table in a detailed format.
+   - Expected Output: Similar to the 'route' command but with more detailed information.
+
+   ```
+   ===========================================================================
+   Interface List
+    5...00 23 ae 39 7f 35 ......Realtek PCIe GbE Family Controller
+   ```
+
+16. **net view**:
+   - Description: Views a list of resources available on a network.
+   - Expected Output: List of shared resources (like computers, printers) available on the network.
+
+   ```
+   Server Name            Remark
+   \\COMPUTER1
+   \\PRINTER1              HP Printer
+   ```
+
+17. **net use**:
+   - Description: Connects to or disconnects from shared network resources.
+   - Expected Output: Command-line confirmation of successful connection or disconnection.
+
+   ```
+   The command completed successfully.
+   ```
+
+18. **net user**:
+   - Description: Manages user accounts on a network.
+   - Expected Output: Information about user accounts, such as username, full name, and account status.
+
+   ```
+   User accounts for \\COMPUTER1
+
+   -------------------------------------------------------------------------------
+       JohnD              Guest
+       Administrator      User
+   ```
+
+19. **net group**:
+   - Description: Manages groups of users on a network.
+   - Expected Output: Information about user groups, including group members.
+
+   ```
+   Group Accounts for \\COMPUTER1
+   -------------------------------------------------------------------------------
+       Administrators     Backup Operators       Guests              Users
+   ```
+
+20. **net share**:
+   - Description: Displays or configures shared resources (such as folders or printers) on a network.
+   - Expected Output: List of shared resources and their properties.
+
+   ```
+   Share name   Resource                        Remark
+   -------------------------------------------------------------------------------
+   C$           C:\                             Default share
+   D$           D:\                             Default share
+   ```
+
+These commands offer a range of functionalities for managing and troubleshooting network connections in a Windows environment.
