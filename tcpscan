@@ -1,0 +1,16 @@
+Nmap Tool:
+TCP Scan: nmap -sT <target>
+Xmas Scan: nmap -sX <target>
+OS Fingerprinting: nmap -O <target>
+Ping Scanning: nmap -sn <target>
+Port Scanning: nmap <target>
+Ping Command:
+Basic Ping: ping <target>
+Continuous Ping: ping -c <count> <target>
+Ping with Timestamp: ping -D <target>
+Traceroute Command:
+Basic Traceroute: traceroute <target>
+Traceroute with Maximum Hops: traceroute -m <max_hops> <target>
+Traceroute using ICMP: traceroute -I <target>
+Whois Command:
+Query WHOIS Database: whois <domain>
